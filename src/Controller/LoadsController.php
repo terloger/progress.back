@@ -67,12 +67,10 @@ class LoadsController extends AppController
             'order' => ['Days.id' => 'DESC'],
             'limit' => 20,
             'contain' => ['Users'],
-            'keyField' => 'Days.id',
             'valueField' => function ($e) {
                 return $e->get('date')->i18nFormat('dd.MM.yyyy') . ' (' .  $e->user->get('name') . ')';
             }
         ]);
-        
         
         $this->set(compact('load', 'typeLoad', 'days'));
         $this->set('_serialize', ['load']);

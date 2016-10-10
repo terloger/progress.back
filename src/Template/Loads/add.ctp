@@ -13,6 +13,7 @@
     <fieldset>
         <legend><?= __('Add Load') ?></legend>
         <?php
+    debug($days->toArray());
             echo $this->Form->input('type_load_id', ['options' => $typeLoad]);
             echo $this->Form->input('day_id', ['options' => $days]);
             echo $this->Form->input('description');
