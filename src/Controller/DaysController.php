@@ -19,6 +19,7 @@ class DaysController extends AppController
     public function index()
     {
         $this->paginate = [
+            'order' => ['Days.id' => 'DESC'],
             'contain' => ['Users']
         ];
         $days = $this->paginate($this->Days);

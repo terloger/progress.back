@@ -19,6 +19,7 @@ class NutritionLogController extends AppController
     public function index()
     {
         $this->paginate = [
+            'order' => ['NutritionLog.id' => 'DESC'],
             'contain' => ['SportNutrition', 'Days']
         ];
         $nutritionLog = $this->paginate($this->NutritionLog);

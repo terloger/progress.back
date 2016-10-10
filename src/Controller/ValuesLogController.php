@@ -19,6 +19,7 @@ class ValuesLogController extends AppController
     public function index()
     {
         $this->paginate = [
+            'order' => ['ValuesLog.id' => 'DESC'],
             'contain' => ['Units', 'Days']
         ];
         $valuesLog = $this->paginate($this->ValuesLog);

@@ -19,6 +19,7 @@ class LoadsController extends AppController
     public function index()
     {
         $this->paginate = [
+            'order' => ['Loads.id' => 'DESC'],
             'contain' => ['TypeLoad', 'Days']
         ];
         $loads = $this->paginate($this->Loads);
