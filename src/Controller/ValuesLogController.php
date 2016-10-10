@@ -64,9 +64,15 @@ class ValuesLogController extends AppController
         }
         $units = $this->ValuesLog->Units->find('list', ['limit' => 200]);
         $days = $this->ValuesLog->Days->find('list', [
-            'order' => ['id' => 'DESC'],
-            'limit' => 20
+            'order' => ['Days.id' => 'DESC'],
+            'limit' => 20,
+            'contain' => ['Users'],
+            'keyField' => 'Days.id',
+            'valueField' => function ($e) {
+                return $e->get('date')->i18nFormat('dd.MM.yyyy') . ' (' .  $e->user->get('name') . ')';
+            }
         ]);
+        
         $this->set(compact('valuesLog', 'units', 'days'));
         $this->set('_serialize', ['valuesLog']);
     }

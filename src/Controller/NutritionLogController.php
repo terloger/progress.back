@@ -64,9 +64,15 @@ class NutritionLogController extends AppController
         }
         $sportNutrition = $this->NutritionLog->SportNutrition->find('list', ['limit' => 200]);
         $days = $this->NutritionLog->Days->find('list', [
-            'order' => ['id' => 'DESC'],
-            'limit' => 20
+            'order' => ['Days.id' => 'DESC'],
+            'limit' => 20,
+            'contain' => ['Users'],
+            'keyField' => 'Days.id',
+            'valueField' => function ($e) {
+                return $e->get('date')->i18nFormat('dd.MM.yyyy') . ' (' .  $e->user->get('name') . ')';
+            }
         ]);
+        
         $this->set(compact('nutritionLog', 'sportNutrition', 'days'));
         $this->set('_serialize', ['nutritionLog']);
     }
