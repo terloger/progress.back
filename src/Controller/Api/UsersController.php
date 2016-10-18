@@ -8,6 +8,15 @@ use Firebase\JWT\JWT;
 
 class UsersController extends AppController {
 
+    public $paginate = [
+        'page' => 1,
+        'limit' => 10,
+        'maxLimit' => 100,
+        'sortWhitelist' => [
+            'id', 'name'
+        ]
+    ];
+    
     public function initialize() {
         parent::initialize();
         $this->Auth->allow(['add', 'token']);
@@ -58,5 +67,25 @@ class UsersController extends AppController {
             ],
             '_serialize' => ['success', 'data']
         ]);
+    }
+
+    public function index() {
+        $this->Crud->on('beforePaginate', function(\Cake\Event\Event $event) {
+            if (!$this->Auth->user('is_admin')) {
+                $this->paginate['conditions']['name'] = '__NOT_PRESENT__';
+            }
+        });
+
+        return $this->Crud->execute();
+    }
+    
+    public function view($id) {
+        if (!$this->Auth->user('is_admin') && $this->Auth->user('id') !== $id) {
+            $this->Crud->on('beforeFind', function(\Cake\Event\Event $event) {
+                $event->subject()->query->where(['name' => '__NOT_PRESENT__']);
+            });
+        }
+
+        return $this->Crud->execute();
     }
 }

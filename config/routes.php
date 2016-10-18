@@ -78,6 +78,13 @@ Router::scope('/', function (RouteBuilder $routes) {
 Router::prefix('api', function ($routes) {
     $routes->extensions(['json']);
     $routes->resources('Users');
+    $routes->resources('Days');
+    $routes->resources('Loads');
+    $routes->resources('SportNutrition');
+    $routes->resources('TypeLoad');
+    $routes->resources('Units');
+    $routes->resources('ValuesLog');
+    
     Router::connect('/api/users/register', ['controller' => 'Users', 'action' => 'add', 'prefix' => 'api']);
     $routes->fallbacks('InflectedRoute');
 });
