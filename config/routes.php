@@ -84,6 +84,7 @@ Router::prefix('api', function ($routes) {
     $routes->resources('TypeLoad');
     $routes->resources('Units');
     $routes->resources('ValuesLog');
+	$routes->resources('NutritionLog');
     
     Router::connect('/api/users/register', ['controller' => 'Users', 'action' => 'add', 'prefix' => 'api']);
     $routes->fallbacks('InflectedRoute');
