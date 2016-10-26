@@ -17,8 +17,8 @@ $this->layout = false;
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
     <title>Progress</title>
     <?= $this->Html->meta('icon') ?>
-</head>
-<script type="text/javascript">
+    
+    <script type="text/javascript">
         var Ext = Ext || {}; // Ext namespace won't be defined yet...
 
         // This function is called by the Microloader after it has performed basic
@@ -57,7 +57,7 @@ $this->layout = false;
     
     
     <!-- The line below must be kept intact for Sencha Cmd to build your application -->
-    <script id="microloader" data-app="66304256-9ede-4120-905e-2bf3ba4ffcbe" type="text/javascript">var Ext=Ext||{};Ext.manifest=Ext.manifest||"modern.json";Ext=Ext||{};
+    <script id="microloader" data-app="66304fff-9dde-4121-915e-3bf3ba4fffff" type="text/javascript">var Ext=Ext||{};Ext.manifest=Ext.manifest||"modern.json";Ext=Ext||{};
 Ext.Boot=Ext.Boot||function(f){function l(b){if(b.$isRequest)return b;b=b.url?b:{url:b};var e=b.url,e=e.charAt?[e]:e,a=b.charset||d.config.charset;x(this,b);delete this.url;this.urls=e;this.charset=a}function r(b){if(b.$isEntry)return b;var e=b.charset||d.config.charset,a=Ext.manifest,a=a&&a.loader,k=void 0!==b.cache?b.cache:a&&a.cache,c;d.config.disableCaching&&(void 0===k&&(k=!d.config.disableCaching),!1===k?c=+new Date:!0!==k&&(c=k),c&&(a=a&&a.cacheParam||d.config.disableCachingParam,c=a+"\x3d"+
 c));x(this,b);this.charset=e;this.buster=c;this.requests=[]}var n=document,q=[],t={disableCaching:/[?&](?:cache|disableCacheBuster)\b/i.test(location.search)||!/http[s]?\:/i.test(location.href)||/(^|[ ;])ext-cache=1/.test(n.cookie)?!1:!0,disableCachingParam:"_dc",loadDelay:!1,preserveScripts:!0,charset:"UTF-8"},u=/\.css(?:\?|$)/i,w=n.createElement("a"),y="undefined"!==typeof window,v={browser:y,node:!y&&"function"===typeof require,phantom:window&&(window._phantom||window.callPhantom)||/PhantomJS/.test(window.navigator.userAgent)},
 g=Ext.platformTags={},x=function(b,e,a){a&&x(b,a);if(b&&e&&"object"===typeof e)for(var d in e)b[d]=e[d];return b},c=function(){var b=!1,e=Array.prototype.shift.call(arguments),a,d,c,m;"boolean"===typeof arguments[arguments.length-1]&&(b=Array.prototype.pop.call(arguments));c=arguments.length;for(a=0;a<c;a++)if(m=arguments[a],"object"===typeof m)for(d in m)e[b?d.toLowerCase():d]=m[d];return e},a="function"==typeof Object.keys?function(b){return b?Object.keys(b):[]}:function(b){var e=[],a;for(a in b)b.hasOwnProperty(a)&&
@@ -111,8 +111,10 @@ else{c.updatedManifest=m;d=c.manifest.getAssets();b=m.getAssets();for(g in b)a=b
 c.updatedAssets.push(a)):a.uncache()}catch(h){l("Error parsing delta patch for "+a.assetConfig.path+" with hash "+d.assetConfig.hash+" . This asset will be uncached for future loading"),a.uncache()}if(0===c.remainingUpdatingAssets)c.onAllUpdatedAssetsReady()},onAllUpdatedAssetsReady:function(){var a;c.updatedAssetsReady=!0;if(c.updatedManifest){for(;0<c.removedAssets.length;)a=c.removedAssets.pop(),a.uncache();for(c.updatedManifest&&c.updatedManifest.cache();0<c.updatedAssets.length;)a=c.updatedAssets.pop(),
 a.cache()}c.notifyUpdateReady()},notifyUpdateReady:function(){"checking"!==c.appCacheState&&c.updatedAssetsReady&&("updated"===c.appCacheState||c.updatedManifest)&&(c.appUpdate={updated:!0,app:"updated"===c.appCacheState,manifest:c.updatedManifest&&c.updatedManifest.exportContent()},c.fireAppUpdate())},fireAppUpdate:function(){Ext.GlobalEvents&&Ext.defer(function(){Ext.GlobalEvents.fireEvent("appupdate",c.appUpdate)},1E3)},checksum:function(a,c){if(!a||!c)return!1;var b=!0,e=c.length,f=a.substring(0,
 1);"/"==f?a.substring(2,e+2)!==c&&(b=!1):"f"==f?a.substring(10,e+10)!==c&&(b=!1):"."==f&&a.substring(1,e+1)!==c&&(b=!1);return b},parseResult:function(a){var c={};!a.exception&&0!==a.status||f.env.phantom?200<=a.status&&300>a.status||304===a.status||f.env.phantom||0===a.status&&0<a.content.length?c.content=a.content:c.error=!0:c.error=!0;return c}};return c}();Ext.manifest=Ext.manifest||"bootstrap";Ext.Microloader.run();</script>
-
+    
+    
 </head>
+
 <body></body>
 </html>
 
