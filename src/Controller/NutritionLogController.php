@@ -69,7 +69,7 @@ class NutritionLogController extends AppController
             'limit' => 20,
             'contain' => ['Users'],
             'valueField' => function ($e) {
-                return $e->get('date')->i18nFormat('dd.MM.yyyy') . ' (' .  $e->user->get('name') . ')';
+                return $e->get('date') . ' (' .  $e->user->get('name') . ')';
             }
         ]);
         

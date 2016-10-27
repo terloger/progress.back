@@ -32,4 +32,12 @@ class Day extends Entity
         '*' => true,
         'id' => false
     ];
+	
+	protected function _getDate($date) {
+		if (is_object($date)) {
+			return $date->i18nFormat('yyyy-MM-dd');
+		} else {
+			return $date;
+		}
+    }
 }

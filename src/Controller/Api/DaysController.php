@@ -45,7 +45,6 @@ class DaysController extends AppController {
         return $this->Crud->execute();
     }
     
-    // http://progress.ter.st/api/days/day/2016-09-26.json
     public function day($date) {
         $this->Crud->on('beforeFind', function(\Cake\Event\Event $event) {
             $event->subject()->query->contain(['Loads', 'Loads.TypeLoad', 'ValuesLog', 'ValuesLog.Units', 'NutritionLog', 'NutritionLog.SportNutrition']);
