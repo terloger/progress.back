@@ -87,6 +87,7 @@ Router::prefix('api', function ($routes) {
 	$routes->resources('NutritionLog');
     
     Router::connect('/api/users/register', ['controller' => 'Users', 'action' => 'add', 'prefix' => 'api']);
+	Router::connect('/api/progress_data/dayPermValues', ['controller' => 'ProgressData', 'action' => 'dayPermValues', 'prefix' => 'api']);
     $routes->fallbacks('InflectedRoute');
 });
 
