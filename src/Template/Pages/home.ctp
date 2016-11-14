@@ -15,8 +15,12 @@ $this->layout = false;
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
-    <title>Progress</title>
+    <title>Прогрессируем!</title>
     <?= $this->Html->meta('icon') ?>
+    
+    <script type="text/javascript" src="libs/d3.v3.min.js"></script>
+    <script type="text/javascript" src="libs/cal-heatmap.min.js"></script>
+    <link rel="stylesheet" href="libs/cal-heatmap.css"/>
     
     <script type="text/javascript">
         var Ext = Ext || {}; // Ext namespace won't be defined yet...
