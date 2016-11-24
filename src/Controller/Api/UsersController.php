@@ -58,8 +58,8 @@ class UsersController extends AppController {
             'data' => [
                 'token' => JWT::encode(
                     [
-                        'sub' => $user['id'],
-                        'exp' =>  time() + 604800
+                        'sub' => $user['id']
+                        //'exp' =>  time() + 604800 // не будем пока экспарить токен
                     ],
                     Security::salt()
                 ),
