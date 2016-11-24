@@ -60,6 +60,7 @@ class ProgressDataController extends DataAppController {
     	$this->loadModel('ValuesLog');
 
 		$units = $_REQUEST['units'];
+		$units = explode(',', $units);
 
         $query = $this->ValuesLog->find()
 		->innerJoin(
