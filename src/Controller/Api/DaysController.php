@@ -4,6 +4,8 @@ namespace App\Controller\Api;
 
 use App\Controller\Api\AppController;
 use Cake\I18n\Time;
+use Cake\Event\Event;
+use App\Crud\Action\DayAction;
 
 class DaysController extends AppController {
 
@@ -17,11 +19,13 @@ class DaysController extends AppController {
         'contain' => ['Loads', 'Loads.TypeLoad', 'ValuesLog', 'ValuesLog.Units', 'NutritionLog', 'NutritionLog.SportNutrition']
     ];
     
-    public function beforeFilter(\Cake\Event\Event $event) {
+    public function beforeFilter(Event $event) {
         $this->Crud->mapAction('day', [
             'className' => '\App\Crud\Action\DayAction',
             'view' => 'day'
         ]);
+		
+		parent::beforeFilter($event);
     }
     
     public function index() {

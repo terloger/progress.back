@@ -7,6 +7,15 @@ use Cake\Event\Event;
 
 class DataAppController extends Controller {
 
+	public function beforeFilter(Event $event) {
+	    parent::beforeFilter($event);
+		
+        $this->response->header('Access-Control-Allow-Origin','*');
+        $this->response->header('Access-Control-Allow-Methods','*');
+        $this->response->header('Access-Control-Allow-Headers','X-ACCESS_TOKEN, Content-Type, x-xsrf-token, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+        $this->response->header('Access-Control-Max-Age','172800');
+	}
+
     public function initialize() {
         parent::initialize();
 
