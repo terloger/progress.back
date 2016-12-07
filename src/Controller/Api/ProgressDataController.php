@@ -29,10 +29,13 @@ class ProgressDataController extends DataAppController {
 		$units = $_REQUEST['units'];
 		$units = explode(',', $units);
 
+		$names = @$_REQUEST['names'];
+		$names = $names ? explode(',', $names) : [];
+
 		$limit = @$_REQUEST['limit'];
 		$limit = (!is_null($limit) ? $limit : 30);		
 
-		$data = $this->_getData($units, $limit);
+		$data = $this->_getData($units, $limit, $names);
 
 		$success = true;
 		$total = $data->count();
@@ -41,7 +44,7 @@ class ProgressDataController extends DataAppController {
         $this->set('_serialize', ['success', 'data', 'total']);
     }
 
-	protected function _getData($units, $limit) {
+	protected function _getData($units, $limit, $names = []) {
 		$query = $this->ValuesLog->find()
 			->innerJoin(
 				['Days' => 'days'],
@@ -77,7 +80,13 @@ class ProgressDataController extends DataAppController {
 		];
 
 		foreach ($units as $key => $value) {
-			$lastSelectParams['unit_' . $value] = $query->func()->max('sub.unit_' . $value);
+			if (count($names)) {
+				$unitName = $names[$key];
+			} else {
+				$unitName = 'unit_' . $value;
+			}
+			
+			$lastSelectParams[$unitName] = $query->func()->max('sub.unit_' . $value);
 		}
 
 		$data = $this->ValuesLog->find()
